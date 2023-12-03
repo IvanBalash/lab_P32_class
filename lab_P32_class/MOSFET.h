@@ -1,8 +1,8 @@
-#pragma once
-#include <string>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
+#pragma once//обрабатываем возможное повторное включения 
+#include <string>//библиотека строк
+#include <iostream>//библиотеа ввода-вывода
+#include <iomanip>//библиотека форматирования ввода-вывода
+#include <fstream>//библиотека фалового ввода вывода
 
 using namespace std;
 
@@ -20,12 +20,12 @@ public:
 	~MOSFET();//деструктор
 	MOSFET(int id, int quantity, float max_Uce, float max_Ube, float max_Ice, string name, string type);//конструктор
 	//методы
-	void edit(int id, int quantity, float max_Uce, float max_Ube, float max_Ice, string name, string type);
-	void edit_console(MOSFET* arr, int length);
-	void edit_console();
-	void print();
-	void print_in_array(int num);
-	string save_print();
+	void edit(int id, int quantity, float max_Uce, float max_Ube, float max_Ice, string name, string type);//изменение из кода
+	void edit_console(MOSFET* arr, int length);//изменение через консоль объекта в составе масива
+	void edit_console();//изменение через консоль
+	void print();//вывод информации об объекте
+	void print_in_array(int num);//вывод информации об объекте в составе масива
+	string save_print();//генерация строки для сохранения в файл
 	bool put(int quantity);
 	bool take(int quantity);
 	//гетеры

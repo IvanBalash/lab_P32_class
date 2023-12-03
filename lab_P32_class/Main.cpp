@@ -1,9 +1,9 @@
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <regex>
-#include <fstream>
-#include "MOSFET.h"
+#include <iostream>//библиотеа ввода-вывода
+#include <string>//библиотека строк
+#include <iomanip>//библиотека форматировани€ ввода-вывода
+#include <regex>//библиотека работы с регул€рными выражени€ми
+#include <fstream>//библиотека фалового ввода вывода
+#include "MOSFET.h"//подключаем созданый нами класс
 
 using namespace std;
 
@@ -36,7 +36,7 @@ bool read_file(string file_name, MOSFET** data, int* length) {
 	MOSFET* local_data = new MOSFET[*length]; // создаем масив структур нужного размера
 	int new_id, new_quantity;
 	float new_max_Uce, new_max_Ube, new_max_Ice;
-	string new_name, new_type;
+	string new_name, new_type;// создаем переменные дл€ свойств
 	for (size_t i = 0; i < *length; i++) { //присваеваем новому масиву значени€ из фаила
 		fin >> new_id;
 		fin >> new_name;
@@ -44,14 +44,14 @@ bool read_file(string file_name, MOSFET** data, int* length) {
 		fin >> new_max_Uce;
 		fin >> new_max_Ube;
 		fin >> new_max_Ice;
-		fin >> new_quantity;
+		fin >> new_quantity;//считываем данные из файла в переменные
 		local_data[i].set_id(new_id);
 		local_data[i].set_name(new_name);
 		local_data[i].set_type(new_type);
 		local_data[i].set_max_Uce(new_max_Uce);
 		local_data[i].set_max_Ube(new_max_Ube);
 		local_data[i].set_max_Ice(new_max_Ice);
-		local_data[i].set_quantity(new_quantity);
+		local_data[i].set_quantity(new_quantity);//присваеваем новые значени€ свойствам объекта
 	}
 	fin.close();// закрываем файл
 	*data = local_data;//присваеваем новое значени€ исходному масиву
@@ -109,7 +109,7 @@ void ADD(MOSFET** data, int length) {
 
 	while (!exit) {//цикл работы в режиме редактировани€
 		system("cls");
-		new_data[length].print();
+		new_data[length].print();// выводим информацию о новом объекте
 		if (icmd) cout << "incorrect command" << endl;
 		if (aeid) cout << "id alredy exist" << endl;
 		if (wc) cout << "channle can be only P or N" << endl;
@@ -240,14 +240,14 @@ void ADD(MOSFET** data, int length) {
 			all_added = 1;//ставим флаг
 		}
 	}
-	*data = new_data;
-	delete[](old_data);
+	*data = new_data;// присваеваем новое значение исходному масиву
+	delete[](old_data);//отчищаем ранее выделеную пам€ть
 	system("cls");
 }
 
 void EDIT(MOSFET** data, int line, int length) {
 	MOSFET* new_data = *data;//переменна€ дл€ работы с масивом
-	new_data[line].edit_console(new_data, length);
+	new_data[line].edit_console(new_data, length);//вызываем метод дл€ изменени€ свойств
 }
 
 void DEL(MOSFET** data, int length, int line) {

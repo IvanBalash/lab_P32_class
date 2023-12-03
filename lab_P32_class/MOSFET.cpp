@@ -167,6 +167,7 @@ void MOSFET::edit_console(){
 		cout << "\tEXIT - return to main menu" << endl << endl;//выводим список команд
 		cin >> edit_cmd;//запрашиваем ввод команды
 		icmd = 0;
+		aeid = 0;
 		wc = 0;
 		ival = 0;//зануляем флаги после прошлой итерации
 		if (edit_cmd == "id") {
@@ -278,7 +279,7 @@ void MOSFET::print_in_array(int num){
 		<< setw(7) << this->max_Ice << '|'
 		<< setw(8) << this->quantity << '|'
 		<< endl;
-	cout << "---------------------------------------------------------------------" << endl;
+	cout << "---------------------------------------------------------------------" << endl;//выводим всю информацию по выбранному элементу
 }
 
 string MOSFET::save_print(){
@@ -289,24 +290,24 @@ string MOSFET::save_print(){
 			  to_string(this->max_Uce) + " " +
 			  to_string(this->max_Ube) + " " +
 			  to_string(this->max_Ice) + " " +
-			  to_string(this->quantity) + "\n";
-	return result;
+			  to_string(this->quantity) + "\n";//формируем строку в нужном формате
+	return result;//возвращаем строку
 }
 
 bool MOSFET::put(int quantity){
-	if (quantity > 0) {
-		this->quantity += quantity;
-		return 1;
+	if (quantity > 0) {//проверям коректность quantity
+		this->quantity += quantity;//изменяем значение
+		return 1;//возвращаем true если все коректно
 	}
-	return 0;
+	return 0;//иначе возвращвем false
 }
 
 bool MOSFET::take(int quantity){
-	if ((quantity > 0) && (quantity <= this->quantity)) {
-		this->quantity -= quantity;
-		return 1;
+	if ((quantity > 0) && (quantity <= this->quantity)) {//проверям коректность quantity
+		this->quantity -= quantity;//изменяем значение
+		return 1;//возвращаем true если все коректно
 	}
-	return 0;
+	return 0;//иначе возвращвем false
 }
 
 int MOSFET::get_id(){
@@ -338,53 +339,53 @@ string MOSFET::get_type(){
 }
 
 bool MOSFET::set_id(int new_id){
-	if (new_id < 1) {
-		return 0;
+	if (new_id < 1) {//проверям коректность значения
+		return 0;//возвращвем false если значение не коректно
 	}
-	this->id = new_id;
-	return 1;
+	this->id = new_id;//присваеваем значение
+	return 1;//возвращаем true если все коректно
 }
 
 bool MOSFET::set_quantity(int new_quantity){
-	if (new_quantity < 0) {
-		return 0;
+	if (new_quantity < 0) {//проверям коректность значения
+		return 0;//возвращвем false если значение не коректно
 	}
-	this->quantity = new_quantity;
-	return 1;
+	this->quantity = new_quantity;//присваеваем значение
+	return 1;//возвращаем true если все коректно
 }
 
 bool MOSFET::set_max_Uce(float new_max_Uce){
-	if (new_max_Uce < 0) {
-		return 0;
+	if (new_max_Uce < 0) {//проверям коректность значения
+		return 0;//возвращвем false если значение не коректно
 	}
-	this->max_Uce = new_max_Uce;
-	return 1;
+	this->max_Uce = new_max_Uce;//присваеваем значение
+	return 1;//возвращаем true если все коректно
 }
 
 bool MOSFET::set_max_Ube(float new_max_Ube){
-	if (new_max_Ube < 0) {
-		return 0;
+	if (new_max_Ube < 0) {//проверям коректность значения
+		return 0;//возвращвем false если значение не коректно
 	}
-	this->max_Ube = new_max_Ube;
-	return 1;
+	this->max_Ube = new_max_Ube;//присваеваем значение
+	return 1;//возвращаем true если все коректно
 }
 
 bool MOSFET::set_max_Ice(float new_max_Ice){
-	if (new_max_Ice < 0) {
-		return 0;
+	if (new_max_Ice < 0) {//проверям коректность значения
+		return 0;//возвращвем false если значение не коректно
 	}
-	this->max_Ice = new_max_Ice;
-	return 1;
+	this->max_Ice = new_max_Ice;//присваеваем значение
+	return 1;//возвращаем true если все коректно
 }
 
 void MOSFET::set_name(string new_name){
-	this->name = new_name;
+	this->name = new_name;//присваеваем значение
 }
 
 bool MOSFET::set_type(string new_type){
-	if ((new_type == "P") || (new_type == "N")) {
-		this->type = new_type;
-		return 1;
+	if ((new_type == "P") || (new_type == "N")) {//проверям коректность значения
+		this->type = new_type;//присваеваем значение
+		return 1;//возвращаем true если все коректно
 	}
-	return 0;
+	return 0;//возвращвем false если значение не коректно
 }
