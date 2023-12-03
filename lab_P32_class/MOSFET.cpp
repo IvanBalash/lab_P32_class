@@ -167,7 +167,6 @@ void MOSFET::edit_console(){
 		cout << "\tEXIT - return to main menu" << endl << endl;//выводим список команд
 		cin >> edit_cmd;//запрашиваем ввод команды
 		icmd = 0;
-		aeid = 0;
 		wc = 0;
 		ival = 0;//зануляем флаги после прошлой итерации
 		if (edit_cmd == "id") {
